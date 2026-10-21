@@ -7,39 +7,27 @@ import utime
 from lcd_api import LcdApi
 from pico_i2c_lcd import I2cLcd
 
-# ---------------------------
 # Ultrasonic Sensor Pins
-# ---------------------------
 trig = Pin(3, Pin.OUT)    # GP3 -> TRIG
 echo = Pin(2, Pin.IN)     # GP2 -> ECHO
 
-# ---------------------------
 # Obstacle Sensor
-# ---------------------------
 obstacle = Pin(4, Pin.IN)  # GP4 -> Obstacle sensor
 
-# ---------------------------
 # LEDs
-# ---------------------------
 led_green = Pin(6, Pin.OUT)   # GP6 -> Green LED
 led_yellow = Pin(7, Pin.OUT)  # GP7 -> Yellow LED
 led_red = Pin(8, Pin.OUT)     # GP8 -> Red LED
 
-# ---------------------------
 # Buzzer (PWM)
-# ---------------------------
 buzzer = PWM(Pin(9))  # GP9 -> Active Buzzer
 
-# ---------------------------
 # LCD (I2C)
-# ---------------------------
 i2c = I2C(0, sda=Pin(0), scl=Pin(1), freq=400000)  # GP0->SDA, GP1->SCL
 I2C_ADDR = i2c.scan()[0]
 lcd = I2cLcd(i2c, I2C_ADDR, 2, 16)
 
-# ---------------------------
 # Functions
-# ---------------------------
 def get_distance():
     # Send trigger pulse
     trig.low()
@@ -70,9 +58,7 @@ def clear_leds():
     led_yellow.low()
     led_red.low()
 
-# ---------------------------
 # Main Loop
-# ---------------------------
 while True:
     distance = get_distance()
     obstacle_detected = obstacle.value()

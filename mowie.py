@@ -3,8 +3,6 @@ from utime import sleep
 from lcd_api import LcdApi
 from pico_i2c_lcd import I2cLcd
 
-
-
 I2C_ADDR = 0x27  
 lcd_rows = 2
 lcd_cols = 16
@@ -25,8 +23,6 @@ lyrics = [
 
 time = 2
 time2 = 4
-
-
 # scl - gp2
 #sda - gp0
 
@@ -40,7 +36,7 @@ for x in range(time):
 
     
     lcd.putstr("Goin'")
-    sleep(0.7)        # wait 1 second
+    sleep(0.7)        # wait 0.7 second
     lcd.clear()
 
     lcd.putstr("back to")
